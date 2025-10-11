@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="rw">
+<head>
+  <!-- =========================
+       SEO & Meta
+  ========================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Or Noir | LP y’ubwenge, ubucuruzi, n’ubushushanyi</title>
+  <meta name="description" content="Or Noir: urubuga rw’umwuga rufite LP y’ubwenge, catalogue, stock intelligence, chatbot, image generation placeholder, jokes, na business logic." />
+  <meta name="keywords" content="Or Noir, boutique, imyenda, ubucuruzi, chatbot, stock, catalogue, jokes, Burundi, Bujumbura" />
+  <link rel="canonical" href="https://example.com/" />
+  <meta property="og:title" content="Or Noir | LP y’ubwenge" />
+  <meta property="og:description" content="Urubuga rufite interactivity idasanzwe, design ya kijyambere, na chatbot y’ubwenge mu Kinyarwanda." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="fallback.jpg" />
+  <meta name="theme-color" content="#0b0b0e" />
+
+  <!-- =========================
+       Styles (Mobile-first)
+  ========================== -->
+  <style>
+    :root {
+      --bg: #0b0b0e;
+      --bg-soft: #13131a;
+      --text: #f4f4f6;
+      --muted: #b0b0b8;
+      --brand: #ffd166; /* Or Noir gold vibe */
+      --accent: #66d9ff;
+      --danger: #ff6b6b;
+      --success: #7bd88f;
+      --focus: #e5ff00;
+      --card: #1a1a22;
+      --border: #2a2a33;
+      --shadow: 0 10px 30px rgba(0,0,0,.4);
+    }
+    [data-theme="light"] {
+      --bg: #f7f7fb;
+      --bg-soft: #ffffff;
+      --text: #14141a;
+      --muted: #5f5f68;
+      --card: #ffffff;
+      --border: #e7e7ef;
+      --shadow: 0 10px 20px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif; }
+    a { color: var(--accent); text-decoration: none }
+    img, video { max-width: 100%; display: block }
+    button, input, select, textarea { font: inherit }
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 16px }
+    .grid { display: grid; gap: 16px }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px; box-shadow: var(--shadow) }
+    .btn { background: var(--brand); color: #1a1a1a; border: none; border-radius: 12px; padding: 12px 16px; cursor: pointer; font-weight: 700 }
+    .btn:hover { filter: brightness(1.05) }
+    .btn.outline { background: transparent; border: 1px solid var(--brand); color: var(--text) }
+    .btn.danger { background: var(--danger); color: #fff }
+    .btn.success { background: var(--success); color: #0b0b0e }
+    .pill { display: inline-block; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg-soft); color: var(--muted); font-size: 12px }
+    .field { display: grid; gap: 6px }
+    .field input, .field select, .field textarea { background: var(--bg-soft); color: var(--text); border: 1px solid var(--border); border-radius: 10px; padding: 10px }
+    .field input:focus, .field select:focus, .field textarea:focus, .btn:focus { outline: 2px solid var(--focus); outline-offset: 2px }
+    .nav { position: fixed; top: 0; left: 0; right: 0; backdrop-filter: blur(10px); background: color-mix(in oklab, var(--bg) 70%, transparent); border-bottom: 1px solid var(--border); z-index: 1000 }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; padding: 8px 16px }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800 }
+    .brand .logo { width: 28px; height: 28px; border-radius: 6px; background: linear-gradient(135deg, var(--brand), #ffb703); box-shadow: var(--shadow) }
+    .menu { display: flex; gap: 10px; flex-wrap: wrap }
+    .hero { position: relative; min-height: 70vh; display: grid; place-items: center; text-align: center; padding-top: 64px }
+    .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(1.1) brightness(.8) }
+    .hero-overlay { position: relative; z-index: 1; display: grid; gap: 16px; max-width: 760px; padding: 24px }
+    .cta-group { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap }
+    .section { padding: 32px 0 }
+    .list { display: grid; grid-template-columns: repeat(1, 1fr); gap: 16px }
+    @media (min-width: 680px) { .list { grid-template-columns: repeat(2, 1fr) } }
+    @media (min-width: 980px) { .list { grid-template-columns: repeat(3, 1fr) } }
+    .footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; color: var(--muted) }
+    .hidden { display: none !important }
+    .fade { animation: fade .5s ease-in-out }
+    @keyframes fade { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: translateY(0) } }
+  </style>
+</head>
+<body>
+  <!-- =========================
+       Dark mode toggle / Nav
+  ========================== -->
+  <nav class="nav" role="navigation">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <a href="#home" aria-label="Go to home">Or Noir</a>
+        <span class="pill">LP y’ubwenge</span>
+      </div>
+      <div class="menu" role="menubar">
+        <a href="#catalogue" role="menuitem">Catalogue</a>
+        <a href="#search" role="menuitem">Search</a>
+        <a href="#stock" role="menuitem">Stock</a>
+        <a href="#chatbot" role="menuitem">Chatbot</a>
+        <a href="#joke" role="menuitem">Joke Zone</a>
+        <a href="#location" role="menuitem">Location</a>
+        <a href="#contact" role="menuitem">Contact</a>
+        <a href="#cart" role="menuitem">Cart</a>
+        <a href="#login" role="menuitem">Login</a>
+        <a href="#analytics" role="menuitem">Analytics</a>
+        <button id="darkToggle" class="btn outline" aria-label="Hindura mode">🌙</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =========================
+       Sections (single-page)
+  ========================== -->
+  <main id="home" class="section hero fade" data-route>
+    <!-- Video background + fallback image -->
+    <video class="bg-video" autoplay muted loop playsinline>
+      <source src="background.mp4" type="video/mp4" />
+      <!-- Fallback image if video fails -->
+      <img src="fallback.jpg" alt="Or Noir background" />
+    </video>
+
+    <div class="hero-overlay card">
+      <h1 style="margin:0">Or Noir</h1>
+      <p style="margin:0">Urubuga rw’umwuga rufite ubwenge, interactivity idasanzwe, na design yihariye. Rwitwara nk’umukozi, umujyanama, umucuruzi, n’umushushanyi—mu nyandiko imwe.</p>
+      <div class="cta-group">
+        <button class="btn" id="ctaDeal" aria-label="Dushorere kugiciro gito">Dushorere kugiciro gito</button>
+        <a class="btn outline" href="#chatbot" aria-label="Vugana n’umukozi">Vugana n’umukozi 💬</a>
+      </div>
+      <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="card">
+          <strong>💬 Chatbot y’ubwenge</strong>
+          <p class="muted">Voice mu Kinyarwanda, memory, jokes, stock intelligence, image generation placeholder.</p>
+        </div>
+        <div class="card">
+          <strong>🛍️ Catalogue</strong>
+          <p class="muted">Search + filters + stock + add to cart (future-ready).</p>
+        </div>
+        <div class="card">
+          <strong>🎨 Design ya kijyambere</strong>
+          <p class="muted">Video background, dark mode, smooth transitions, responsive mobile-first.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Catalogue -->
+  <section id="catalogue" class="section container hidden fade" data-route>
+    <h2>Catalogue</h2>
+    <div class="grid" style="grid-template-columns:1fr 2fr">
+      <div class="card">
+        <div class="field">
+          <label>🔍 Shakisha</label>
+          <input id="searchInput" type="search" placeholder="Andika izina ry’igicuruzwa..." />
+        </div>
+        <div class="field">
+          <label>📂 Category</label>
+          <select id="filterCategory">
+            <option value="">Zose</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>💵 Price (max)</label>
+          <input id="filterPrice" type="number" min="0" placeholder="Urugero: 50000" />
+        </div>
+        <div class="field">
+          <label>✅ Availability</label>
+          <select id="filterAvailability">
+            <option value="">Zose</option>
+            <option value="in">Irahari</option>
+            <option value="out">Yarangiye</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <div id="productList" class="list"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stock Management (admin) -->
+  <section id="stock" class="section container hidden fade" data-route>
+    <h2>Stock Management</h2>
+    <div class="card">
+      <p class="muted">Admin view: hindura stock, urebe availability, urebe ibiciro.</p>
+      <div id="stockTable" class="grid" style="grid-template-columns:repeat(1,1fr)"></div>
+    </div>
+  </section>
+
+  <!-- Search Page -->
+  <section id="search" class="section container hidden fade" data-route>
+    <h2>Search</h2>
+    <div class="card">
+      <div class="field">
+        <label>Andika icyo ushaka</label>
+        <input id="globalSearch" type="search" placeholder="Imyenda, inkweto, accessories..." />
+      </div>
+      <div id="searchResults" class="list" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- Chatbot Page -->
+  <section id="chatbot" class="section container hidden fade" data-route>
+    <h2>Chatbot</h2>
+    <div class="grid" style="grid-template-columns:1fr 2fr">
+      <div class="card">
+        <strong>🧠 Puter.js style logic</strong>
+        <ul>
+          <li><span class="pill">Voice mu Kinyarwanda</span></li>
+          <li><span class="pill">Memory (localStorage)</span></li>
+          <li><span class="pill">Stock & jokes</span></li>
+          <li><span class="pill">Text-to-image placeholder</span></li>
+        </ul>
+        <div class="grid" style="grid-template-columns:1fr 1fr; gap:8px">
+          <button id="btnSpeak" class="btn">🎙️ Tangira kuvuga</button>
+          <button id="btnStopSpeak" class="btn outline">⛔ Hagarika</button>
+          <button id="btnClearMem" class="btn danger">🧹 Siba memory</button>
+          <button id="btnGenerate" class="btn">🖼️ Genera ifoto (placeholder)</button>
+        </div>
+        <p id="imageStatus" class="muted"></p>
+      </div>
+      <div class="card" style="min-height:280px">
+        <div id="chatWindow" style="display:flex;flex-direction:column;gap:10px"></div>
+        <div class="grid" style="grid-template-columns:1fr auto; margin-top:10px">
+          <input id="chatInput" type="text" placeholder="Andika cyangwa koresha voice..." />
+          <button id="chatSend" class="btn">Ohereza</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Joke Zone -->
+  <section id="joke" class="section container hidden fade" data-route>
+    <h2>Joke Zone</h2>
+    <div class="grid" style="grid-template-columns:1fr 2fr">
+      <div class="card">
+        <p class="muted">Joke spinner mu Kirundi/Kinyarwanda, irinda gusubiramo (localStorage), isome mu ijwi, kandi ushare kuri WhatsApp.</p>
+        <div class="grid" style="grid-template-columns:1fr 1fr; gap:8px">
+          <button id="btnJoke" class="btn">🎲 Tera Joke</button>
+          <button id="btnReadJoke" class="btn outline">🔊 Soma mu ijwi</button>
+          <button id="btnShareJoke" class="btn success">🟢 Kohereza kuri WhatsApp</button>
+          <button id="btnResetJokes" class="btn danger">♻️ Reset jok es</button>
+        </div>
+      </div>
+      <div class="card">
+        <div id="jokeBox" style="min-height:80px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section id="location" class="section container hidden fade" data-route>
+    <h2>Location</h2>
+    <div class="card">
+      <p><strong>Adresse:</strong> Bujumbura, Burundi</p>
+      <p><strong>Coordinates:</strong> Latitude -3.36392°, Longitude 29.378</p>
+      <p><strong>Hours:</strong> Mon–Sat: 08:30–19:00, Sun: 14:00–18:00</p>
+      <iframe
+        title="Or Noir Location"
+        src="https://maps.google.com/maps?q=-3.36392,29.378&z=15&output=embed"
+        width="100%" height="380" style="border:0" allowfullscreen=""
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="grid" style="grid-template-columns:1fr 1fr; gap:10px; margin-top:10px">
+        <a class="btn outline" href="https://www.google.com/maps/dir/?api=1&destination=-3.36392,29.378" target="_blank" rel="noopener">🔎 Directions</a>
+        <a class="btn" href="#contact">📞 Hamagara/Andikira</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section container hidden fade" data-route>
+    <h2>Contact & Support</h2>
+    <div class="grid" style="grid-template-columns:1fr 2fr">
+      <div class="card">
+        <p><strong>Support:</strong> 📞 +25771633859 | 📧 ornoirbruce5@gmail.com</p>
+        <a class="btn success" target="_blank" rel="noopener"
+           href="https://wa.me/25771633859?text=Muraho%20Or%20Noir%2C%20ndakeneye%20ubufasha.">🟢 WhatsApp autoresponder</a>
+      </div>
+      <div class="card">
+        <form action="https://formsubmit.io/send/ornoirbruce5@gmail.com" method="POST">
+          <div class="field">
+            <label>Izina</label>
+            <input type="text" name="name" placeholder="Izina ryawe" required />
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Email yawe" required />
+          </div>
+          <div class="field">
+            <label>Message</label>
+            <textarea name="message" rows="4" placeholder="Andika ubutumwa..." required></textarea>
+          </div>
+          <input name="_redirect" type="hidden" value="https://example.com/#contact" />
+          <button class="btn" type="submit">Ohereza</button>
+        </form>
+      </div>
+    </div>
+    <div class="card" style="margin-top:10px">
+      <p class="muted">Live chatbot support ihari ku page ya Chatbot. Ushobora kuyikoresha buri gihe.</p>
+      <a class="btn outline" href="#chatbot">💬 Jya kuri Chatbot</a>
+    </div>
+  </section>
+
+  <!-- Cart (future-ready) -->
+  <section id="cart" class="section container hidden fade" data-route>
+    <h2>Cart</h2>
+    <div class="card">
+      <p class="muted">Future-ready: turabika ibyo wongeye mu gikapu (localStorage). Urebe hasi:</p>
+      <div id="cartItems" class="list"></div>
+      <div class="grid" style="grid-template-columns:1fr 1fr; gap:10px; margin-top:10px">
+        <button id="btnClearCart" class="btn danger">Siba Cart</button>
+        <button class="btn success">Komeza kugura (placeholder)</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Login/Register -->
+  <section id="login" class="section container hidden fade" data-route>
+    <h2>Login / Register</h2>
+    <div class="grid" style="grid-template-columns:1fr 2fr">
+      <div class="card">
+        <form id="registerForm">
+          <h3>Kwiyandikisha</h3>
+          <div class="field">
+            <label>Izina</label>
+            <input type="text" name="name" required />
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" name="email" required />
+          </div>
+          <div class="field">
+            <label>Uburyo</label>
+            <select name="role">
+              <option>Umucuruzi</option>
+              <option>Umukiriya</option>
+            </select>
+          </div>
+          <button class="btn" type="submit">Iyandikishe</button>
+        </form>
+      </div>
+      <div class="card">
+        <form id="loginForm">
+          <h3>Injira</h3>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" name="email" required />
+          </div>
+          <div class="field">
+            <label>Ijambo ry’ibanga</label>
+            <input type="password" name="password" required />
+          </div>
+          <button class="btn" type="submit">Injira (placeholder)</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Analytics placeholder -->
+  <section id="analytics" class="section container hidden fade" data-route>
+    <h2>Analytics</h2>
+    <div class="card">
+      <p class="muted">Placeholder: page views, search hits, cart adds, chatbot interactions.</p>
+      <div id="analyticsBox" class="grid" style="grid-template-columns:repeat(2,1fr)"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    © Or Noir — Ubumenyi, Ubwiza, n’Ubucuruzi
+  </footer>
+
+  <!-- =========================
+       Data: Embedded products JSON
+       (supermarket-style)
+  ========================== -->
+  <script id="products-json" type="application/json">
+  [
+    {
+      "category": "Imyenda",
+      "subcategory": "Abagabo",
+      "name": "Ikoti rya Or Noir",
+      "price": 45000,
+      "stock": 12,
+      "image": "ikoti.jpg",
+      "description": "Ikoti rigezweho rifite design ya Or Noir."
+    },
+    {
+      "category": "Imyenda",
+      "subcategory": "Abagore",
+      "name": "Ikanzu Or Noir Classic",
+      "price": 62000,
+      "stock": 0,
+      "image": "ikanzu.jpg",
+      "description": "Ikanzu y’akarango ka Or Noir, elegance + comfort."
+    },
+    {
+      "category": "Inkweto",
+      "subcategory": "Unisex",
+      "name": "Sneakers Or Noir Flow",
+      "price": 78000,
+      "stock": 7,
+      "image": "sneakers.jpg",
+      "description": "Inkweto zoroheje zifite style ya kijyambere."
+    },
+    {
+      "category": "Accessories",
+      "subcategory": "Belts",
+      "name": "Umukandara Gold Stripe",
+      "price": 25000,
+      "stock": 30,
+      "image": "belt.jpg",
+      "description": "Umukandara ufite utudomo twa zahabu."
+    }
+  ]
+  </script>
+
+  <!-- =========================
+       Scripts: Routing, UI/UX, Chatbot, Voice, Stock, Jokes
+  ========================== -->
+  <script>
+    // ---------------------------------------
+    // Helper utils
+    // ---------------------------------------
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+    const storage = {
+      get: (k, d=null) => { try { return JSON.parse(localStorage.getItem(k)) ?? d } catch { return d } },
+      set: (k, v) => localStorage.setItem(k, JSON.stringify(v)),
+      del: (k) => localStorage.removeItem(k)
+    };
+    const formatFbu = n => new Intl.NumberFormat('rw-RW').format(n) + " Fbu";
+
+    // ---------------------------------------
+    // Theme toggle
+    // ---------------------------------------
+    const savedTheme = storage.get('theme', 'dark');
+    document.body.setAttribute('data-theme', savedTheme);
+    $('#darkToggle').addEventListener('click', () => {
+      const now = document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      document.body.setAttribute('data-theme', now);
+      storage.set('theme', now);
+    });
+
+    // ---------------------------------------
+    // Router (hash-based)
+    // ---------------------------------------
+    function showRoute() {
+      const hash = location.hash.replace('#', '') || 'home';
+      $$('[data-route]').forEach(s => s.classList.add('hidden'));
+      const target = document.getElementById(hash);
+      if (target) target.classList.remove('hidden');
+      // lightweight scroll
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    window.addEventListener('hashchange', showRoute);
+    document.addEventListener('DOMContentLoaded', showRoute);
+
+    // ---------------------------------------
+    // CTA focus accessibility
+    // ---------------------------------------
+    const cta = $('#ctaDeal');
+    cta.addEventListener('focus', () => cta.setAttribute('aria-live', 'polite'));
+    cta.addEventListener('click', () => location.hash = '#catalogue');
+
+    // ---------------------------------------
+    // Load products from embedded JSON
+    // ---------------------------------------
+    const products = JSON.parse($('#products-json').textContent);
+    const categories = [...new Set(products.map(p => p.category))];
+
+    // Populate filters
+    const catSelect = $('#filterCategory');
+    categories.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c; opt.textContent = c;
+      catSelect.appendChild(opt);
+    });
+
+    // Render product card
+    function productCard(p, idx) {
+      const inStock = p.stock > 0;
+      const div = document.createElement('div');
+      div.className = 'card fade';
+      div.innerHTML = `
+        <div style="display:flex;gap:12px">
+          <div style="flex:0 0 90px;height:90px;background:${inStock?'#0f1a12':'#1a1212'};border-radius:12px;display:grid;place-items:center;border:1px solid var(--border)">
+            <span class="pill">${p.subcategory}</span>
+          </div>
+          <div style="flex:1">
+            <h3 style="margin:0">${p.name}</h3>
+            <p class="muted" style="margin:0">${p.description}</p>
+            <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+              <span class="pill">${p.category}</span>
+              <span class="pill">${formatFbu(p.price)}</span>
+              <span class="pill">${inStock ? 'Irahari: '+p.stock : 'Yarangiye'}</span>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:10px">
+              <button class="btn" data-add="${idx}">🛒 Ongera mu gikapu</button>
+              <button class="btn outline" data-askstock="${idx}">🤖 Baza Chatbot</button>
+            </div>
+          </div>
+        </div>
+      `;
+      return div;
+    }
+
+    // Catalogue filtering
+    function applyFilters() {
+      const q = $('#searchInput').value.trim().toLowerCase();
+      const cat = $('#filterCategory').value;
+      const maxPrice = parseInt($('#filterPrice').value || '0', 10);
+      const avail = $('#filterAvailability').value; // '', 'in', 'out'
+      const list = $('#productList');
+      list.innerHTML = '';
+
+      const filtered = products.filter(p => {
+        const matchesQ = !q || [p.name, p.description, p.category, p.subcategory].join(' ').toLowerCase().includes(q);
+        const matchesCat = !cat || p.category === cat;
+        const matchesPrice = !maxPrice || p.price <= maxPrice;
+        const matchesAvail = !avail || (avail === 'in' ? p.stock > 0 : p.stock === 0);
+        return matchesQ && matchesCat && matchesPrice && matchesAvail;
+      });
+
+      filtered.forEach((p, idx) => list.appendChild(productCard(p, idx)));
+      // Attach actions
+      list.querySelectorAll('[data-add]').forEach(btn => btn.addEventListener('click', (e) => {
+        const i = parseInt(e.currentTarget.getAttribute('data-add'), 10);
+        addToCart(products[i]);
+      }));
+      list.querySelectorAll('[data-askstock]').forEach(btn => btn.addEventListener('click', (e) => {
+        const i = parseInt(e.currentTarget.getAttribute('data-askstock'), 10);
+        botSay(`Igicuruzwa "${products[i].name}" ${products[i].stock>0 ? 'kirahari' : 'ntikihari'}.`);
+      }));
+    }
+    ['DOMContentLoaded', 'input', 'change'].forEach(evt => {
+      document.addEventListener(evt, () => {
+        if (!$('#catalogue').classList.contains('hidden')) applyFilters();
+      });
+      $('#searchInput')?.addEventListener('input', applyFilters);
+      $('#filterCategory')?.addEventListener('change', applyFilters);
+      $('#filterPrice')?.addEventListener('input', applyFilters);
+      $('#filterAvailability')?.addEventListener('change', applyFilters);
+    });
+
+    // ---------------------------------------
+    // Global search page
+    // ---------------------------------------
+    $('#globalSearch')?.addEventListener('input', () => {
+      const q = $('#globalSearch').value.trim().toLowerCase();
+      const res = $('#searchResults');
+      res.innerHTML = '';
+      products
+        .filter(p => [p.name, p.description, p.category, p.subcategory].join(' ').toLowerCase().includes(q))
+        .forEach(p => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <h3 style="margin:0">${p.name}</h3>
+            <p class="muted">${p.category} • ${p.subcategory} • ${formatFbu(p.price)}</p>
+            <button class="btn">Reba muri Catalogue</button>
+          `;
+          card.querySelector('button').addEventListener('click', () => location.hash = '#catalogue');
+          res.appendChild(card);
+        });
+    });
+
+    // ---------------------------------------
+    // Cart (future-ready) with localStorage
+    // ---------------------------------------
+    function getCart() { return storage.get('cart', []) }
+    function setCart(c) { storage.set('cart', c); renderCart() }
+    function addToCart(item) {
+      const cart = getCart();
+      cart.push({ name: item.name, price: item.price, ts: Date.now() });
+      setCart(cart);
+      botSay(`Nongereye "${item.name}" mu gikapu. Igiciro: ${formatFbu(item.price)}.`);
+    }
+    function renderCart() {
+      const box = $('#cartItems');
+      if (!box) return;
+      box.innerHTML = '';
+      const cart = getCart();
+      if (cart.length === 0) {
+        box.innerHTML = '<p class="muted">Cart yawe iracyari ubusa.</p>';
+        return;
+      }
+      cart.forEach(c => {
+        const d = document.createElement('div');
+        d.className = 'card';
+        d.innerHTML = `<strong>${c.name}</strong><p class="muted">${formatFbu(c.price)}</p>`;
+        box.appendChild(d);
+      });
+    }
+    $('#btnClearCart')?.addEventListener('click', () => setCart([]));
+    document.addEventListener('DOMContentLoaded', renderCart);
+
+    // ---------------------------------------
+    // Stock admin view
+    // ---------------------------------------
+    function renderStockTable() {
+      const box = $('#stockTable'); if (!box) return;
+      box.innerHTML = '';
+      products.forEach((p, idx) => {
+        const row = document.createElement('div');
+        row.className = 'card';
+        row.innerHTML = `
+          <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;align-items:center">
+            <div><strong>${p.name}</strong><p class="muted" style="margin:0">${p.category} • ${p.subcategory}</p></div>
+            <div><span class="pill">${formatFbu(p.price)}</span></div>
+            <div><input type="number" min="0" value="${p.stock}" data-stock="${idx}" /></div>
+            <div><button class="btn outline" data-save="${idx}">Save</button></div>
+          </div>
+        `;
+        box.appendChild(row);
+      });
+      box.querySelectorAll('[data-save]').forEach(btn => btn.addEventListener('click', (e) => {
+        const i = parseInt(e.currentTarget.getAttribute('data-save'), 10);
+        const input = box.querySelector(`[data-stock="${i}"]`);
+        const newStock = parseInt(input.value, 10);
+        products[i].stock = isNaN(newStock) ? products[i].stock : newStock;
+        botSay(`Stock ya "${products[i].name}" yahindutse: ${products[i].stock}.`);
+        applyFilters();
+        renderStockTable();
+      }));
+    }
+    document.addEventListener('DOMContentLoaded', renderStockTable);
+
+    // ---------------------------------------
+    // Chatbot: Puter.js style logic
+    // - Memory (localStorage)
+    // - Voice (Web Speech API)
+    // - Stock & jokes
+    // - Text-to-image placeholder
+    // ---------------------------------------
+    const chatMem = storage.get('chatMemory', []);
+    const chatWin = $('#chatWindow');
+    function pushChat(role, text) {
+      const bubble = document.createElement('div');
+      bubble.className = 'card';
+      bubble.style.background = role === 'user' ? 'var(--bg-soft)' : 'var(--card)';
+      bubble.innerHTML = `<strong>${role === 'user' ? '👤 Wowe' : '🤖 Or Noir'}</strong><p style="margin:6px 0">${text}</p>`;
+      chatWin.appendChild(bubble);
+      chatWin.scrollTop = chatWin.scrollHeight;
+    }
+    function botSay(text) {
+      pushChat('bot', text);
+      chatMem.push({ role: 'bot', text, ts: Date.now() });
+      storage.set('chatMemory', chatMem);
+    }
+    function userSay(text) {
+      pushChat('user', text);
+      chatMem.push({ role: 'user', text, ts: Date.now() });
+      storage.set('chatMemory', chatMem);
+      const reply = botLogic(text);
+      botSay(reply);
+    }
+    // Basic NLU-ish logic
+    function botLogic(input) {
+      const msg = input.toLowerCase();
+      // Greetings / role
+      if (/(muraho|bite|bonjour|hello|salut)/.test(msg)) {
+        return "Muraho neza! Ndi umukozi wa Or Noir: ngufasha kugura, kugisha inama, no kuguha ibisobanuro by’ibicuruzwa.";
+      }
+      // Price inquiry
+      const pFound = products.find(p => msg.includes(p.name.toLowerCase().split(' ')[0]));
+      if (/(igiciro|angahe|price)/.test(msg) && pFound) {
+        return `${pFound.name} igiciro ni ${formatFbu(pFound.price)}.`;
+      }
+      // Stock check
+      if (/(irahari|stock|available)/.test(msg) && pFound) {
+        return `Igicuruzwa "${pFound.name}" ${pFound.stock>0 ? 'kirahari' : 'ntikihari'}.`;
+      }
+      // Category suggestions
+      if (/(imyenda|inkweto|accessories|belt|umukandara)/.test(msg)) {
+        const cat = categories.find(c => msg.includes(c.toLowerCase()));
+        const picks = products.filter(p => !cat || p.category === cat).slice(0,3).map(p=>p.name).join(', ');
+        return `Dore ibyo nasabiye: ${picks}. Ushaka kongera mu gikapu? Andika izina ry’icyo ushaka.`;
+      }
+      // Jokes
+      if (/(joke|abaseka|seka|ihangane)/.test(msg)) {
+        return getJoke();
+      }
+      // Life/support
+      if (/(ubufasha|support|email|phone|whatsapp)/.test(msg)) {
+        return "Ushobora kuduhamagara kuri +25771633859, cyangwa email ornoirbruce5@gmail.com, cyangwa WhatsApp link iri kuri Contact.";
+      }
+      // Image generation placeholder
+      if (/(ifoto|image|shushanya|design)/.test(msg)) {
+        return "Nashyizeho placeholder yo kugenera amafoto. Andika: ‘genera ifoto: [bisobanuro]’ kugira ngo ntangire.";
+      }
+      // Memory acknowledgement
+      if (/ibyo navuze|remember|memory/.test(msg)) {
+        const last = chatMem.find(m => m.role === 'user')?.text || "Nta byo nabonye.";
+        return `Ndibuka ko wavuze: “${last}”.`;
+      }
+      // Add to cart intent
+      const toAdd = products.find(p => msg.includes(p.name.toLowerCase().split(' ')[0])) || null;
+      if (/(onger|add|shyira|gukapu)/.test(msg) && toAdd) {
+        addToCart(toAdd);
+        return `Byemeje: "${toAdd.name}" yongewe mu gikapu.`;
+      }
+      // Fallback
+      return "Ndabyumva. Ushaka kugura iki? Cyangwa kugisha inama ku category runaka?";
+    }
+
+    // Restore chat memory on load
+    document.addEventListener('DOMContentLoaded', () => {
+      chatMem.forEach(m => pushChat(m.role === 'user' ? 'user' : 'bot', m.text));
+    });
+
+    // Send message
+    $('#chatSend')?.addEventListener('click', () => {
+      const v = $('#chatInput').value.trim();
+      if (!v) return;
+      $('#chatInput').value = '';
+      userSay(v);
+    });
+    $('#chatInput')?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') $('#chatSend').click();
+    });
+
+    // Voice recognition (Web Speech API) in Kinyarwanda
+    let rec = null;
+    function initRec() {
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SR) { botSay("Voice recognition ntiyemewe kuri browser yawe."); return null; }
+      const r = new SR();
+      r.lang = 'rw-RW'; // Kinyarwanda target; browsers may fallback
+      r.continuous = false;
+      r.interimResults = false;
+      r.onresult = (e) => {
+        const text = e.results[0][0].transcript;
+        userSay(text);
+      };
+      r.onerror = () => botSay("Habuze amakuru ya voice. Gerageza kongera.");
+      r.onend = () => { /* ready */ };
+      return r;
+    }
+    $('#btnSpeak')?.addEventListener('click', () => {
+      rec = rec || initRec();
+      try { rec && rec.start(); } catch {}
+    });
+    $('#btnStopSpeak')?.addEventListener('click', () => {
+      try { rec && rec.stop(); } catch {}
+    });
+
+    // Clear memory
+    $('#btnClearMem')?.addEventListener('click', () => {
+      storage.del('chatMemory');
+      chatWin.innerHTML = '';
+      botSay("Memory yasibwe. Tugitangira bundi bushya.");
+    });
+
+    // Text-to-image placeholder (no frameworks)
+    $('#btnGenerate')?.addEventListener('click', () => {
+      const prompt = prompt("Andika ibisobanuro by’ifoto ushaka:");
+      const status = $('#imageStatus');
+      if (!prompt) { status.textContent = "Ntacyo wanditse."; return; }
+      status.textContent = `🖼️ Placeholder: ndategura ifoto ya "${prompt}". (Iyi ni demo—ishobora kugeragezwa hifashishijwe API mu bihe biri imbere.)`;
+    });
+
+    // ---------------------------------------
+    // Joke engine (Kirundi/Kinyarwanda)
+    // ---------------------------------------
+    const jokes = [
+      "Umugabo yagiye ku isoko, abaza igiciro, bamubwira: 'iguze ejo bundi'—aravuga: 'noneho nimungurize ejo bundi!'",
+      "Umwana abaza se: 'Papa, Or Noir n’iki?' Papa: 'Ni aho ujya ugacaho style ugataha watsinze!'",
+      "Umucuruzi ati: 'Ikanzu irahenze.' Umukiriya: 'Nayo igize inshuti?'",
+      "Umugenzi ashatse inkweto za zahabu. Umucuruzi: 'Dufite color ya zahabu mu mutima—price ikaba mu bikapu!'",
+      "Umukandara wa Or Noir: uragufata neza—n’iyo wishimiye igiciro, ntukagwe!"
+    ];
+    function getUsedJokes() { return storage.get('usedJokes', []) }
+    function setUsedJokes(u) { storage.set('usedJokes', u) }
+    function getJoke() {
+      const used = getUsedJokes();
+      const unused = jokes.filter(j => !used.includes(j));
+      const pick = unused[Math.floor(Math.random() * Math.max(unused.length,1))] || "Ibyo nabisangiye nawe—nta joke nshya, kanda reset.";
+      if (unused.length) { used.push(pick); setUsedJokes(used); }
+      $('#jokeBox') && ($('#jokeBox').textContent = pick);
+      return pick;
+    }
+    $('#btnJoke')?.addEventListener('click', () => botSay(getJoke()));
+    $('#btnResetJokes')?.addEventListener('click', () => { storage.del('usedJokes'); botSay("Jokes zasubijwe ku ntangiro."); });
+    // Read joke aloud
+    function speak(text) {
+      if (!('speechSynthesis' in window)) { botSay("Speech synthesis ntiri available kuri browser yawe."); return; }
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'rw-RW'; // target language
+      speechSynthesis.speak(utter);
+    }
+    $('#btnReadJoke')?.addEventListener('click', () => {
+      const txt = $('#jokeBox')?.textContent || "Nta joke irahari.";
+      speak(txt);
+    });
+    // Share joke to WhatsApp
+    $('#btnShareJoke')?.addEventListener('click', () => {
+      const txt = encodeURIComponent($('#jokeBox')?.textContent || "Nta joke irahari.");
+      const url = `https://wa.me/?text=${txt}`;
+      window.open(url, '_blank', 'noopener');
+    });
+
+    // ---------------------------------------
+    // Analytics placeholder
+    // ---------------------------------------
+    const analytics = storage.get('analytics', { views: 0, searches: 0, cartAdds: 0, botMsgs: 0 });
+    function bump(key) {
+      analytics[key] = (analytics[key] || 0) + 1;
+      storage.set('analytics', analytics);
+      renderAnalytics();
+    }
+    function renderAnalytics() {
+      const box = $('#analyticsBox'); if (!box) return;
+      box.innerHTML = '';
+      ['views','searches','cartAdds','botMsgs'].forEach(k => {
+        const c = document.createElement('div');
+        c.className = 'card';
+        c.innerHTML = `<strong>${k}</strong><p class="muted">${analytics[k] || 0}</p>`;
+        box.appendChild(c);
+      });
+    }
+    document.addEventListener('DOMContentLoaded', () => { bump('views'); renderAnalytics(); });
+    $('#globalSearch')?.addEventListener('input', () => bump('searches'));
+    function addToCartTracked(item) { bump('cartAdds'); addToCart(item) }
+    // Override addToCart button binding to track:
+    document.addEventListener('click', (e) => {
+      const el = e.target.closest('[data-add]');
+      if (el) {
+        e.stopPropagation();
+        const i = parseInt(el.getAttribute('data-add'), 10);
+        addToCartTracked(products[i]);
+      }
+    });
+    const origBotSay = botSay;
+    botSay = (t) => { bump('botMsgs'); origBotSay(t); };
+
+    // ---------------------------------------
+    // Login/Register placeholders
+    // ---------------------------------------
+    $('#registerForm')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      botSay("Kwiyandikisha byakunze (placeholder). Tuzongeramo authentication mu minsi iri imbere.");
+    });
+    $('#loginForm')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      botSay("Login yakunze (placeholder). Urahawe ikaze kuri Or Noir.");
+    });
+  </script>
+</body>
+</html>
