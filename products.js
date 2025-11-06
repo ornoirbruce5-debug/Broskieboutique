@@ -34,28 +34,28 @@ const PRODUCTS = [
   },
   {
     id: "p-004",
-    name: "Umufuka w'ububiko",
-    price: 9000,
-    description: "Umufuka wubatswe neza, ushobora gutwara ibintu byinshi kandi ukomeye.",
-    category: "Amasakoshi",
+    name: "maillot zikomeye",
+    price: 45000,
+    description: " maillot zikomeye zitandukanye.",
+    category: "Impuzu",
     stock: 31,
     image: "placeholder-product-4.jpg"
   },
   {
     id: "p-005",
-    name: "Amavuta y'uruhu",
-    price: 6500,
-    description: "Amavuta atandukanye yo kwisiga, yorohereza uruhu kandi agatanga umucyo karemano.",
-    category: "Ubwiza",
+    name: "impuzu zabakobwa",
+    price: 10.000+,
+    description: "Impuzu nziza cane , styles zitandukanye zabakobwa.",
+    category: "Impuzu",
     stock: 15,
     image: "placeholder-product-5.jpg"
   },
   {
     id: "p-006",
-    name: "Isahani y'ibanze",
-    price: 3500,
-    description: "Isahani yoroheje yo mu gikoni, ikozwe mu bikoresho biramba.",
-    category: "Ibikoresho byo mu rugo",
+    name: "Umupira wimbeho",
+    price: 35.000,
+    description: "Hari imipira yimbeho myiza.",
+    category: "Impuzu",
     stock: 60,
     image: "placeholder-product-6.jpg"
   }
