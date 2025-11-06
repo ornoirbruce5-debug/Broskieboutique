@@ -8,8 +8,8 @@ const PRODUCTS = [
   {
     id: "p-001",
     name: "Air Jordan",
-    price: 145.000,
-    description: "Iyi air Jordan ni fire kuma style yose .",
+    price: 145000,
+    description: "Iyi air Jordan ni 🔥 kuma style yose .",
     category: "Ibirato",
     stock: 24,
     image: "placeholder-product-1.jpg"
@@ -17,8 +17,8 @@ const PRODUCTS = [
   {
     id: "p-002",
     name: "Air fox qualité 1",
-    price: 180.000,
-    description: "Iyi air fox irarenze.",
+    price: 180000,
+    description: "Iyi air fox irarenze 👌🏽.",
     category: "Ibirato",
     stock: 48,
     image: "placeholder-product-2.jpg"
@@ -26,8 +26,8 @@ const PRODUCTS = [
   {
     id: "p-003",
     name: "Triko",
-    price: 10.000,
-    description: "trickot kurigiciro gito.",
+    price: 10000,
+    description: "trickot👕 kurigiciro gito.",
     category: "Impuzu",
     stock: 8,
     image: "placeholder-product-3.jpg"
@@ -44,7 +44,7 @@ const PRODUCTS = [
   {
     id: "p-005",
     name: "impuzu zabakobwa",
-    price: 10.000,
+    price: 10000,
     description: "Impuzu nziza cane , styles zitandukanye zabakobwa.",
     category: "Impuzu",
     stock: 15,
@@ -53,7 +53,7 @@ const PRODUCTS = [
   {
     id: "p-006",
     name: "Umupira wimbeho",
-    price: 35.000,
+    price: 35000,
     description: "Hari imipira yimbeho myiza.",
     category: "Impuzu",
     stock: 60,
