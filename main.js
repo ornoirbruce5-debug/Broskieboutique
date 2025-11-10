@@ -14,7 +14,7 @@
    Konfigurasiyo (ahindura hano imwe)
    ---------------------- */
 const CONFIG = {
-  WHATSAPP_NUMBER: '25700000000',          // Hindura hano niba ushaka numero nshya (country code + number)
+  WHATSAPP_NUMBER: '25771633859',          // Hindura hano niba ushaka numero nshya (country code + number)
   THEME_KEY: 'bdm_theme_v1',
   JOKES_SEEN_KEY: 'bdm_seen_jokes_v1',
   LOCAL_MSGS_KEY: 'bdm_local_messages_v1',
@@ -118,9 +118,9 @@ function renderTestimonials() {
   if (!container) return;
 
   const samples = [
-    { name: 'Aline', text: 'Serivisi yihuse, ibiciro byiza kandi byumvikana!', rating: 5, emoji: '🎉' },
-    { name: 'Jean', text: 'WhatsApp support yansubije ako kanya — nakiriye abayigura.', rating: 4, emoji: '👍' },
-    { name: 'Marie', text: 'Urubuga rworohereza urubyiruko mu kubona amahirwe.', rating: 5, emoji: '🚀' }
+    { name: 'Aline', text: 'Serivisi yihuse, ibiciro vyiza kandi vyumvikana!', rating: 5, emoji: '🎉' },
+    { name: 'Jean', text: 'WhatsApp support yansubije ako kanya — nakiriye ivyo nasavye.', rating: 4, emoji: '👍' },
+    { name: 'Marie', text: 'Urubuga rworohereza aba jeune mu kubona ibicuruzwa.', rating: 5, emoji: '🚀' }
   ];
 
   container.innerHTML = '';
